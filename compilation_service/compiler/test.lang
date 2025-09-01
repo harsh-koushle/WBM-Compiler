@@ -1,0 +1,43 @@
+// test.lang: A comprehensive test of all new features.
+
+// -- STRINGS and PRINT --
+string message = "Hello, World!";
+print(message);
+
+// -- IF/ELSE STATEMENTS and BOOLEANS --
+bool condition = true;
+if (condition) {
+    print("Condition is true!");
+} else {
+    print("This should not appear.");
+}
+
+if (5 < 10) {
+    print("5 is less than 10.");
+}
+
+// -- ARRAYS --
+int[] numbers = {10, 20, 30, 40, 50};
+print("The third number in the array is:");
+print(numbers[2]); // Should print 30
+
+// Change a value in the array
+numbers[2] = 300;
+print("The third number is now:");
+print(numbers[2]); // Should print 300
+
+// -- WHILE LOOPS --
+int i = 0;
+print("While loop counting to 3:");
+while (i < 3) {
+    print(i);
+    i = i + 1;
+}
+
+// -- FOR LOOPS --
+print("For loop counting from 5 to 7:");
+for (int j = 5; j < 8; j = j + 1) {
+    print(j);
+}
+
+print("All features tested!");

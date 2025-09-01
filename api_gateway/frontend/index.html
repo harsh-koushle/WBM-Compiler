@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarity Language</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/theme/dracula.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WBM-Compiler</h1>
+            <p>A statically typed, C-style programming language designed for readability and ease of use.</p>
+        </header>
+
+        <main class="main-grid">
+            <div class="documentation">
+                <h2>Documentation</h2>
+                
+                <h3>Variables & Types</h3>
+                <p>Clarity is a <b>statically typed</b> language, so you must declare the type of a variable before assigning a value. Core types include <code>string</code>, <code>int</code>, and <code>bool</code>.</p>
+                <div class="code-block">
+                    <button class="copy-btn" aria-label="Copy Code"></button>
+                    <pre><code class="language-csharp">string message = "Hello from Clarity!";
+int version = 1;
+bool is_active = true;
+print(message);</code></pre>
+                </div>
+
+                <h3>Conditionals</h3>
+                <p>Control the flow of your program using standard <code>if</code>/<code>else</code> statements. These structures execute different blocks of code based on whether a given condition evaluates to true or false.</p>
+                <div class="code-block">
+                    <button class="copy-btn" aria-label="Copy Code"></button>
+                    <pre><code class="language-csharp">int score = 85;
+if (score > 50) {
+    print("You passed!");
+} else {
+    print("Please try again.");
+}</code></pre>
+                </div>
+
+                <h3>Loops</h3>
+                <p>Repeatedly execute blocks of code using <code>while</code> and <code>for</code> loops. The <code>for</code> loop is perfect for iterating a known number of times.</p>
+                <div class="code-block">
+                    <button class="copy-btn" aria-label="Copy Code"></button>
+                    <pre><code class="language-csharp">print("Counting from 5 to 7:");
+for (int j = 5; j < 8; j = j + 1) {
+    print(j);
+}</code></pre>
+                </div>
+
+                <h3>Arrays</h3>
+                <p>Arrays are ordered lists that hold values of the same type. You can access and modify elements using <b>zero-based indexing</b>.</p>
+                <div class="code-block">
+                    <button class="copy-btn" aria-label="Copy Code"></button>
+                    <pre><code class="language-csharp">int[] numbers = {10, 20, 30, 40};
+print(numbers[2]); // Prints 30
+
+numbers[2] = 300;
+print(numbers[2]); // Prints 300</code></pre>
+                </div>
+            </div>
+
+            <div class="playground">
+                <h2>PlayBox</h2>
+                <textarea id="editor">string message = "Hello, Clarity!";
+print(message);
+
+print("Let's count to 2:");
+for (int i = 0; i < 3; i = i + 1) {
+    print(i);
+}</textarea>
+                <div class="playground-controls">
+                    <button id="run-btn" class="control-btn">▶ Run</button>
+                    <button id="stop-btn" class="control-btn">■ Stop</button>
+                    <button id="save-btn" class="control-btn">💾 Save</button>
+                </div>
+                <div class="output-container">
+                    <h3>Output:</h3>
+                    <pre id="output"></pre>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/clike/clike.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+/* --- Variable Definitions & Global Styles --- */
+:root {
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #2a2a2a;
+    --bg-tertiary: #333333;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-primary: #ffb07c;
+    --accent-hover: #ff9a57;
+    --border-color: #444;
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'Roboto Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+}
+
+code {
+    background-color: var(--bg-tertiary);
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+}
+
+/* --- Main Layout Grid --- */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* --- Documentation Section --- */
+.documentation {
+    display: flex;
+    flex-direction: column;
+}
+
+.code-block {
+    position: relative;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    overflow: hidden; /* Ensures the pre tag respects the border-radius */
+}
+
+.code-block pre {
+    padding: 1rem;
+    margin: 0 !important; /* Override PrismJS default margin */
+}
+
+.copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-btn::before {
+    content: '📋'; /* Clipboard emoji */
+    font-size: 16px;
+}
+
+.copy-btn.copied::before {
+    content: '✅'; /* Checkmark emoji */
+}
+
+.code-block:hover .copy-btn {
+    opacity: 1;
+}
+
+.copy-btn:hover {
+    background-color: #4a4a4a;
+}
+
+/* --- Playground Section --- */
+.playground {
+    position: sticky;
+    top: 2rem;
+    height: calc(100vh - 4rem);
+    display: flex;
+    flex-direction: column;
+}
+
+.CodeMirror {
+    flex-grow: 1;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-size: 14px;
+    height: auto; /* Allow flexbox to control height */
+}
+
+.playground-controls {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.control-btn {
+    border: none;
+    padding: 8px 16px; /* Smaller padding */
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem; /* Smaller font size */
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.control-btn:active {
+    transform: scale(0.97);
+}
+
+#run-btn {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+}
+#run-btn:hover {
+    background: var(--accent-hover);
+}
+
+#stop-btn {
+    background-color: #7a7a7a;
+    color: var(--text-primary);
+}
+#stop-btn:hover {
+    background-color: #8c8c8c;
+}
+
+#save-btn {
+    background-color: #4a6d95;
+    color: var(--text-primary);
+}
+#save-btn:hover {
+    background-color: #5a82b0;
+}
+
+
+.output-container {
+    margin-top: 1rem;
+    flex-shrink: 0; /* Prevent from shrinking */
+}
+
+#output {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 1rem;
+    border-radius: 8px;
+    min-height: 120px;
+    font-family: var(--font-mono);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border: 1px solid var(--border-color);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .playground {
+        position: static;
+        height: auto;
+        margin-top: 2rem;
+    }
+
+    .CodeMirror {
+        height: 400px;
+    }
+}

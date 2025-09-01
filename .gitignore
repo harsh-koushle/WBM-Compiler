@@ -1,0 +1,8 @@
+# Ignore Python virtual environments
+venv/
+/api_gateway/venv/
+/compilation_service/venv/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc

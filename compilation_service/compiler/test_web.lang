@@ -1,0 +1,2 @@
+string dish = "ChickenChangezi";
+print(dish);
