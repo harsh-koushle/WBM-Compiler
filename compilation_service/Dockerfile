@@ -1,18 +1,21 @@
-# Use an official lightweight Python image as a base
+# Use an official lightweight Python image
 FROM python:3.9-slim
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy your compiler's source code into the container
-COPY ./compiler /app
+# Copy dependency file and install
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install any dependencies your compiler might have (if any)
-# If your compiler needs libraries, add a requirements.txt in the compiler/ folder
-# and uncomment the next line:
-# RUN pip install --no-cache-dir -r requirements.txt
+# Copy the web server application code
+COPY ./app /app/app
 
-# This command runs when the container starts.
-# We will override this with the specific file to compile.
-# This just confirms the setup is okay.
-CMD ["python", "main.py"]
+# Copy your actual compiler code
+COPY ./compiler /app/compiler
+
+# Expose the port the app runs on
+EXPOSE 8000
+
+# CORRECT CMD: Start the Uvicorn web server, not the compiler script
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
