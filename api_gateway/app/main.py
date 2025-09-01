@@ -27,6 +27,7 @@ app.add_middleware(
 
 # --- Job Management ---
 jobs = {}
+
 COMPILATION_SERVICE_URL = os.getenv("COMPILATION_SERVICE_URL")
 
 async def run_compilation(job_id: UUID, source_code: str):
@@ -37,10 +38,15 @@ async def run_compilation(job_id: UUID, source_code: str):
             if not COMPILATION_SERVICE_URL:
                 raise ValueError("COMPILATION_SERVICE_URL is not set.")
             
+            # ✅ CORRECT: Define the URL variable first
+            full_url = f"{COMPILATION_SERVICE_URL}/compile"
+            
+            # ✅ CORRECT: Pass the variable directly to the post method
             response = await client.post(
-                COMPILATION_SERVICE_URL,
+                full_url, 
                 json={"source_code": source_code}
             )
+            
             response.raise_for_status()
             result = response.json()
             jobs[job_id]["result"] = result

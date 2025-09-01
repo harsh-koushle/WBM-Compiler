@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const outputElement = document.getElementById("output");
 
     // --- NEW: Backend API Configuration ---
-    const API_BASE_URL = 'http://127.0.0.1:8000'; // Or an empty string '' for deployment
+    const API_BASE_URL = ''; // Or an empty string '' for deployment
 
     /**
      * Polls the backend for the result of a compilation job.
